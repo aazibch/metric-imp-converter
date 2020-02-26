@@ -1,12 +1,18 @@
 module.exports = {
     extractUnitAndNum: (input) => {
-        const unitIndex = input.match(/[a-zA-Z]/).index;
-    
-        const result = {
-            num: input.slice(0, unitIndex),
-            unit: input.slice(unitIndex)
+        const matchResult = input.match(/[a-zA-Z]/);
+        const result = {};
+
+        if (matchResult) {
+            const unitIndex = matchResult.index;
+
+            result.num = input.slice(0, unitIndex); 
+            result.unit = input.slice(unitIndex);
+        } else {
+            result.num = input;
+            result.unit = null;
         }
-    
+
         if (result.num === '') result.num = '1';
         return result;
     },
