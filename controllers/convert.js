@@ -15,7 +15,7 @@ exports.getConversionResult = (req, res) => {
     const convertedVal = utils.convertValue(reqVal.num, convertTo.converted);
     const string = utils.generateString(reqVal.num, reqVal.unit, convertedVal, convertTo.unit);
 
-    res.send({
+    res.status(200).send({
         initNum: +reqVal.num,
         initUnit: reqVal.unit,
         returnNum: convertedVal,
